@@ -27,7 +27,7 @@ características físico-químicas.
 
 | Item | Link |
 |---|---|
-| Repositório | |
+| Repositório |[Wine-Quality-Tech-Challenge-Fase-2](https://github.com/fndexs/Wine-Quality-Tech-Challenge-Fase-2)|
 | Vídeo executivo (até 5 min) | |
 | Apresentação executiva | |
 
@@ -90,21 +90,25 @@ pip install -r requirements.txt
 jupyter notebook
 ```
 
-Baixe o arquivo `WineQT.csv` do Kaggle e coloque em `data/` (o dataset não é versionado no
-Git, ver `data/README.md`).
+Baixe o arquivo `WineQT.csv` do Kaggle e coloque em `data/raw/` (os dados não são versionados
+no Git, ver `data/README.md`).
 
-Para rodar no Google Colab (forma usada durante o desenvolvimento):
+Depois execute os notebooks nesta ordem:
 
-1. Abra `notebooks/wine_quality_classificacao.ipynb` no Colab.
-2. Execute as células em ordem, de cima para baixo.
-3. Quando solicitado, faça upload do `WineQT.csv`.
-4. Os gráficos, tabelas de métricas, importância de variáveis e o modelo final (`.joblib`) são
-   salvos automaticamente na pasta `results/` durante a execução; a última célula empacota tudo
-   em um `.zip` para download.
+| # | Notebook | O que faz |
+|---|---|---|
+| 1 | `notebooks/01_eda.ipynb` | Contexto do problema, entendimento inicial da base, criação do alvo binário e análise exploratória |
+| 2 | `notebooks/02_preprocessamento.ipynb` | Verificação de nulos, decisão de normalização e feature engineering |
+| 3 | `notebooks/03_modelagem.ipynb` | Divisão treino/teste e treino dos três modelos |
+| 4 | `notebooks/04_avaliacao.ipynb` | Métricas, curvas, importância de variáveis, validação cruzada e conclusões |
 
-**Semente fixa:** `RANDOM_STATE = 42`, definida na primeira célula de código do notebook.
-Rodar o notebook do início ao fim, em ambiente limpo, deve reproduzir os mesmos números da
-seção 5.
+Cada notebook salva um arquivo que o seguinte usa como entrada (ver `notebooks/README.md` para
+detalhes do encadeamento). Rodando no Google Colab, cada um pede o upload do arquivo gerado
+pelo anterior quando não encontra ele já na sessão.
+
+**Semente fixa:** `RANDOM_STATE = 42`, definida na primeira célula de código de cada notebook.
+Rodar os quatro na ordem acima, a partir de um ambiente limpo, deve reproduzir os mesmos
+números da seção 5.
 
 ---
 
@@ -191,12 +195,23 @@ pouco entre os dois métodos, mas esse conjunto de quatro se repete no topo.
 ```
 wine-quality-classification/
 │
-├── data/                    dataset bruto, não versionado, ver data/README.md
-├── notebooks/               notebook com toda a análise e modelagem
-├── src/                     reservado para scripts auxiliares, se necessário
-├── results/                 gráficos, tabelas de métricas e modelo final gerados pelo notebook
-├── requirements.txt         bibliotecas utilizadas, com versões
-└── README.md                este arquivo
+├── data/
+│   ├── README.md            instruções para baixar o dataset
+│   ├── raw/                 vazio no Git, dados brutos não versionados
+│   └── processed/           vazio no Git, gerado pelos notebooks 01 e 02
+│
+├── notebooks/
+│   ├── README.md            ordem de execução e encadeamento
+│   ├── 01_eda.ipynb
+│   ├── 02_preprocessamento.ipynb
+│   ├── 03_modelagem.ipynb
+│   └── 04_avaliacao.ipynb
+│
+├── src/                      reservado para scripts auxiliares, se necessário
+├── results/                  gráficos, tabelas de métricas e modelo final
+├── submissao/                PDF de submissão com os três links
+├── requirements.txt          bibliotecas utilizadas, com versões
+└── README.md                 este arquivo
 ```
 
 ---
