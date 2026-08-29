@@ -1,0 +1,14 @@
+# dados
+data/*.csv
+data/*.zip
+
+# ambiente
+.venv/
+__pycache__/
+*.pyc
+
+# jupyter
+.ipynb_checkpoints/
+
+# sistema
+.DS_Store
