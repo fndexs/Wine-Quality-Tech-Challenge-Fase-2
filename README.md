@@ -1,4 +1,4 @@
-# Tech Challenge — Fase 2 | Classificação da Qualidade de Vinhos
+# Tech Challenge Fase 2 - Classificação da Qualidade de Vinhos
 
 Projeto da disciplina de Data Analytics (POSTECH), Fase 2. O objetivo é treinar e avaliar
 modelos de classificação capazes de prever se um vinho é de alta qualidade a partir de suas
@@ -10,9 +10,9 @@ características físico-químicas.
 
 | Campo | Valor |
 |---|---|
-| Turma | POSTECH — Data Analytics |
-| Grupo | Eduarda Fernandes e Vitor Campos|
-| Data de entrega | 01/09/2026|
+| Turma | 14DTAT |
+| Grupo | Eduarda Fernandes e Vitor Campos |
+| Data de entrega | 01/09/2026 |
 
 ### Integrantes
 
@@ -53,8 +53,9 @@ binária:
 
 | Campo | Valor |
 |---|---|
-| Fonte | Wine Quality Dataset (Kaggle) — arquivo `WineQT.csv` |
+| Fonte | Wine Quality Dataset (Kaggle), arquivo `WineQT.csv` |
 | Linhas × colunas | 1143 × 13 (antes da remoção de duplicados) |
+| Licença de uso | Ver página do dataset no Kaggle |
 
 Descrição das variáveis:
 
@@ -76,7 +77,38 @@ Descrição das variáveis:
 
 ---
 
-## 4. Resultados
+## 4. Como reproduzir
+
+```
+git clone <URL_DO_REPOSITORIO>
+cd wine-quality-classification
+
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+
+pip install -r requirements.txt
+jupyter notebook
+```
+
+Baixe o arquivo `WineQT.csv` do Kaggle e coloque em `data/` (o dataset não é versionado no
+Git, ver `data/README.md`).
+
+Para rodar no Google Colab (forma usada durante o desenvolvimento):
+
+1. Abra `notebooks/wine_quality_classificacao.ipynb` no Colab.
+2. Execute as células em ordem, de cima para baixo.
+3. Quando solicitado, faça upload do `WineQT.csv`.
+4. Os gráficos, tabelas de métricas, importância de variáveis e o modelo final (`.joblib`) são
+   salvos automaticamente na pasta `results/` durante a execução; a última célula empacota tudo
+   em um `.zip` para download.
+
+**Semente fixa:** `RANDOM_STATE = 42`, definida na primeira célula de código do notebook.
+Rodar o notebook do início ao fim, em ambiente limpo, deve reproduzir os mesmos números da
+seção 5.
+
+---
+
+## 5. Resultados
 
 Base final após remoção de duplicados: 1018 amostras (de 1143 originais, foram descartadas
 125 linhas duplicadas ignorando o `Id`). A classe de interesse é bem minoritária: 137 vinhos de
@@ -105,9 +137,9 @@ Validação cruzada do modelo final (5 folds):
 conjunto de teste (0,509), critério que o notebook usa para escolher `best_model_name`
 automaticamente.
 
-Vale registrar o trade-off entre os três: Random Forest tem a maior precisão (quando prevê
+Existe um trade-off claro entre os três: Random Forest tem a maior precisão (quando prevê
 "alta qualidade", acerta 80% das vezes) mas erra a maior parte dos vinhos bons de fato (recall
-de só 0,353). A Regressão Logística é o oposto — captura 76,5% dos vinhos realmente bons, mas
+de só 0,353). A Regressão Logística é o oposto: captura 76,5% dos vinhos realmente bons, mas
 com bastante falso positivo. Gradient Boosting fica no meio do caminho entre os dois, o que
 explica o F1 mais alto. Qual desses trade-offs importa mais depende de como o modelo seria
 usado na prática: se o custo de deixar passar um vinho bom for mais alto que o custo de marcar
@@ -120,22 +152,22 @@ honesta do que a acurácia simples nesse cenário.
 
 **Variáveis mais relevantes:** tanto pela importância do Random Forest quanto pela importância
 por permutação do modelo final, os fatores que mais pesam na previsão são a razão entre álcool
-e densidade, o teor alcoólico isolado, os sulfatos e a acidez volátil — nessa ordem varia um
+e densidade, o teor alcoólico isolado, os sulfatos e a acidez volátil. A ordem varia um
 pouco entre os dois métodos, mas esse conjunto de quatro se repete no topo.
 
 ---
 
-## 5. Principais conclusões
+## 6. Principais conclusões
 
 1. A razão entre álcool e densidade, o teor alcoólico, os sulfatos e a acidez volátil são os
-   fatores que mais pesam na previsão de qualidade nesta base — o que é coerente com o que já
+   fatores que mais pesam na previsão de qualidade nesta base, o que é coerente com o que já
    se sabe sobre esses parâmetros na produção de vinho tinto.
 2. Nenhum dos três modelos testados teve F1 acima de 0,51, o que mostra que o problema é difícil
    de resolver só com as variáveis físico-químicas disponíveis: existe uma parcela da qualidade
    sensorial (aroma, complexidade, harmonia) que provavelmente não está capturada nesses dados.
 3. Gradient Boosting foi o modelo com melhor equilíbrio entre precisão e recall (F1 de 0,509),
    mas a diferença para a Regressão Logística (F1 de 0,500) é pequena o suficiente para que a
-   escolha final dependa também de qual erro custa mais caro no processo — deixar passar um
+   escolha final dependa também de qual erro custa mais caro no processo: deixar passar um
    vinho bom ou sinalizar um vinho mediano como promissor.
 4. O modelo deve ser tratado como ferramenta de apoio à decisão durante o processo produtivo,
    sinalizando lotes com perfil físico-químico fora do padrão de vinhos bem avaliados, e não
@@ -154,12 +186,12 @@ pouco entre os dois métodos, mas esse conjunto de quatro se repete no topo.
 
 ---
 
-## 6. Estrutura do repositório
+## 7. Estrutura do repositório
 
 ```
 wine-quality-classification/
 │
-├── data/                    dataset bruto (não versionado — ver data/README.md)
+├── data/                    dataset bruto, não versionado, ver data/README.md
 ├── notebooks/               notebook com toda a análise e modelagem
 ├── src/                     reservado para scripts auxiliares, se necessário
 ├── results/                 gráficos, tabelas de métricas e modelo final gerados pelo notebook
@@ -169,7 +201,7 @@ wine-quality-classification/
 
 ---
 
-## 7. Tecnologias
+## 8. Tecnologias
 
 - Python 3
 - pandas, numpy
@@ -177,3 +209,4 @@ wine-quality-classification/
 - scikit-learn
 - joblib
 - Jupyter Notebook / Google Colab
+
