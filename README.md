@@ -28,8 +28,8 @@ características físico-químicas.
 | Item | Link |
 |---|---|
 | Repositório |[Wine-Quality-Tech-Challenge-Fase-2](https://github.com/fndexs/Wine-Quality-Tech-Challenge-Fase-2)|
-| Vídeo executivo (até 5 min) | |
-| Apresentação executiva | |
+| Vídeo executivo (até 5 min) | [Vídeo Executivo ](https://canva.link/lx6ho0phkmw852h)|
+| Apresentação executiva |[Apresentação Executiva](https://canva.link/lx6ho0phkmw852h) |
 
 ---
 
