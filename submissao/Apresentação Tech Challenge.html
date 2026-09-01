@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Classificação da Qualidade de Vinhos | Pitch Executivo</title>
+<style>
+:root{--bg:#090304;--wine:#6f2531;--wine2:#9f3045;--gold:#c9a227;--green:#58d68d;--red:#ff6b6b;--blue:#62d2ff;--text:#fffaf7;--muted:#dccbc3;--line:rgba(255,255,255,.16);--card:rgba(255,255,255,.09);--shadow:0 24px 80px rgba(0,0,0,.46)}
+*{box-sizing:border-box;margin:0;padding:0} html{overflow:hidden;height:100%} body{font-family:Inter,Segoe UI,Arial,sans-serif;background:radial-gradient(circle at 14% 12%,rgba(201,162,39,.22),transparent 28%),radial-gradient(circle at 88% 20%,rgba(159,48,69,.36),transparent 34%),linear-gradient(135deg,#090304,#23080e 55%,#030102);color:var(--text);overflow:hidden;height:100%} body:before{content:"";position:fixed;inset:0;opacity:.055;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--wine2),var(--green));z-index:50}nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:30;width:min(1140px,calc(100% - 32px));display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid var(--line);border-radius:999px;background:rgba(9,3,4,.7);backdrop-filter:blur(22px);box-shadow:var(--shadow)}.brand{font-weight:950;display:flex;gap:10px;align-items:center}.logo{width:34px;height:34px;border-radius:13px;background:linear-gradient(135deg,var(--wine2),var(--gold));display:grid;place-items:center}.logo:after{content:"🍷"}.links a{color:var(--muted);text-decoration:none;font-size:12px;font-weight:900;margin-left:12px}.links a.active{color:white}#deck{height:100vh;display:flex;transition:transform .72s cubic-bezier(.22,1,.36,1)}.section{min-width:100vw;width:100vw;height:100vh;display:flex;align-items:center;padding:clamp(64px,11vh,108px) 6vw clamp(20px,5vh,58px);overflow:hidden}.wrap{width:min(1160px,100%);margin:auto;max-height:calc(100vh - 120px);overflow-y:auto;overflow-x:hidden}.eyebrow{color:var(--gold);font-size:12px;font-weight:950;letter-spacing:.18em;text-transform:uppercase;margin-bottom:18px;display:flex;gap:16px;align-items:center;justify-content:center;text-align:center;position:relative;left:50%;width:100vw}.eyebrow:before,.eyebrow:after{content:"";flex:1 1 auto;max-width:38vw;height:2px}.eyebrow:before{background:linear-gradient(90deg,var(--gold),transparent)}.eyebrow:after{background:linear-gradient(90deg,transparent,var(--gold))}.eyebrow{transform:translateX(-50%)}.eyebrow.reveal{transform:translateX(-50%) translateY(34px)}.eyebrow.reveal.visible{transform:translateX(-50%)}h1{font-size:clamp(38px,5.6vw,74px);line-height:1.05;letter-spacing:-.03em;margin-bottom:22px;overflow-wrap:break-word}h2{font-size:clamp(32px,5vw,58px);line-height:.95;letter-spacing:-.055em;margin-bottom:18px}h3{font-size:22px;margin-bottom:10px}p{font-size:clamp(15px,1.55vw,19px);line-height:1.48;color:var(--muted);max-width:900px}.gradient{background:linear-gradient(105deg,#fff 12%,#f4d37b,var(--gold));-webkit-background-clip:text;color:transparent}.grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}.home-row{align-items:stretch}.home-kpis{display:flex;flex-direction:column;justify-content:space-between;height:100%}.kpi-stack{display:flex;flex-direction:column;gap:16px;flex:1}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.panel{padding:clamp(16px,3vh,24px);border-radius:26px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(18px)}.kpi{padding:clamp(12px,2.4vh,18px);border-radius:20px;background:rgba(255,255,255,.08);border:1px solid var(--line)}.kpi strong{font-size:32px;display:block;letter-spacing:-.05em}.kpi span{font-size:12px;color:var(--muted);text-transform:uppercase;font-weight:900;letter-spacing:.12em}.insight{background:rgba(255,255,255,.08);border-left:6px solid var(--gold);border-radius:18px;padding:15px 17px;margin:16px 0;color:var(--muted)}.insight b{color:#fff}.win{border-left-color:var(--green)}.risk{border-left-color:var(--red)}.chartbox{height:clamp(220px,32vh,340px);padding:18px;border-radius:26px;background:var(--card);border:1px solid var(--line);position:relative;box-shadow:var(--shadow)}.chartbox canvas{width:100%;height:100%}.chart-title{position:absolute;left:18px;top:14px;font-size:12px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.12em}.table{width:100%;border-collapse:collapse;margin-top:12px;color:var(--muted);font-size:13.5px}.table th,.table td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left}.table th{color:#fff}.num{text-align:right!important;font-variant-numeric:tabular-nums}.pill{display:inline-block;padding:7px 10px;border-radius:999px;background:rgba(201,162,39,.15);border:1px solid rgba(201,162,39,.28);color:#ffe6a5;font-weight:900;font-size:12px}.pill.green{background:rgba(88,214,141,.15);border-color:rgba(88,214,141,.32);color:#bdffd8}.sim{display:grid;grid-template-columns:1fr 1fr;gap:24px}.sliders label{display:block;margin:10px 0 5px;color:var(--muted);font-weight:850}.sliders input{width:100%;accent-color:var(--gold)}.gauge{height:clamp(200px,30vh,300px);display:grid;place-items:center}.gauge-circle{width:clamp(190px,26vh,260px);height:clamp(190px,26vh,260px);border-radius:50%;background:conic-gradient(var(--gold) var(--p),rgba(255,255,255,.1) 0);display:grid;place-items:center;box-shadow:0 0 45px rgba(201,162,39,.18)}.gauge-inner{width:66%;height:66%;border-radius:50%;background:#210910;display:grid;place-items:center;text-align:center;border:1px solid var(--line);padding:10px}.gauge-inner strong{font-size:clamp(24px,4vh,34px);display:block;margin-bottom:6px}.slide-controls{position:fixed;right:24px;bottom:24px;z-index:40;display:flex;gap:12px}.control{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(9,3,4,.74);color:white;font-size:17px;cursor:pointer}.counter{position:fixed;left:24px;bottom:28px;z-index:40;color:var(--muted);font-size:10px;font-weight:900;letter-spacing:.1em;background:rgba(9,3,4,.74);border:1px solid var(--line);border-radius:999px;padding:7px 11px}.reveal{opacity:0;transform:translateY(34px);transition:.72s}.reveal.visible{opacity:1;transform:none}.small{font-size:12.5px;color:var(--muted)}@media(max-width:900px){.links{display:none}.grid2,.sim{grid-template-columns:1fr}.grid3,.grid4{grid-template-columns:1fr 1fr}.section{padding-left:24px;padding-right:24px}.chartbox{height:300px}}@media(max-width:620px){.grid3,.grid4{grid-template-columns:1fr}.section{overflow:auto}.wrap{max-height:none}h1{font-size:44px}}
+.center-head{text-align:center;margin-left:auto;margin-right:auto;max-width:840px}.chart-title.center{left:0;right:0;width:100%;text-align:center}#problema .panel,#valor .panel{text-align:center}#modelo .table th,#modelo .table td,#threshold .table th,#threshold .table td{text-align:center}#modelo .table td.num,#threshold .table td.num{text-align:center!important}#drivers .grid2,#modelo .grid2{align-items:stretch}#drivers .panel,#modelo .panel{overflow:auto}#simulador .panel{min-height:clamp(320px,50vh,460px);display:flex;flex-direction:column;justify-content:center}.gauge-panel h3{text-align:center}.final-wrap{display:flex;align-items:center;justify-content:center;height:60vh;width:100%}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden !important;
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.wrap::-webkit-scrollbar,
+.section::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+#deck {
+  height: 100vh;
+  height: 100dvh;
+}
+.section {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden !important;
+  padding-top: clamp(76px, 10vh, 100px);
+  padding-bottom: clamp(16px, 3vh, 34px);
+}
+.wrap {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+
+@media (max-height: 820px) and (min-width: 621px) {
+  .section { padding-top: 76px; padding-bottom: 14px; }
+  .eyebrow { margin-bottom: 10px; }
+  h1 { font-size: clamp(34px, 5vw, 62px); margin-bottom: 14px; }
+  h2 { font-size: clamp(28px, 4.2vw, 48px); margin-bottom: 12px; }
+  h3 { font-size: 19px; margin-bottom: 7px; }
+  p { font-size: clamp(13px, 1.3vw, 17px); line-height: 1.35; }
+  .grid2, .sim { gap: 18px; }
+  .grid3 { gap: 12px; }
+  .panel { padding: 15px; border-radius: 20px; }
+  .kpi-stack { gap: 10px; }
+  .kpi { padding: 10px 14px; }
+  .kpi strong { font-size: 27px; }
+  .chartbox { height: clamp(190px, 29vh, 270px); padding: 14px; }
+  .table th, .table td { padding: 6px 6px; }
+  .insight { margin: 10px 0; padding: 11px 14px; }
+  .gauge { height: clamp(230px, 36vh, 340px); }
+  .gauge-circle { width: clamp(220px, 32vh, 320px); height: clamp(220px, 32vh, 320px); }
+  .sliders label { margin: 6px 0 3px; }
+  .final-wrap { height: 52vh; }
+}
+
+
+@media (max-width: 620px) {
+  .section {
+    overflow: hidden !important;
+    padding: 72px 18px 14px;
+  }
+  .wrap {
+    max-height: calc(100dvh - 86px) !important;
+    overflow: hidden !important;
+  }
+  h1 { font-size: clamp(32px, 10vw, 44px); }
+  h2 { font-size: clamp(27px, 8vw, 38px); }
+  .panel { padding: 12px; }
+  .chartbox { height: 220px; }
+}
+
+
+
+.section {
+  align-items: flex-start !important;
+  padding-top: 102px !important;
+}
+.section > .wrap {
+  margin: 0 auto !important;
+  width: min(1160px, 100%);
+}
+.section .eyebrow {
+  margin-top: 0 !important;
+  margin-bottom: 18px;
+}
+
+
+@media (max-height: 820px) and (min-width: 621px) {
+  .section {
+    padding-top: 92px !important;
+  }
+  .section .eyebrow {
+    margin-bottom: 10px;
+  }
+}
+
+
+@media (max-width: 620px) {
+  .section {
+    align-items: flex-start !important;
+    padding-top: 86px !important;
+  }
+}
+
+
+
+.section .eyebrow {
+  margin-bottom: 34px !important;
+}
+
+
+#home .eyebrow {
+  margin-bottom: 34px !important;
+}
+
+
+@media (max-height: 820px) and (min-width: 621px) {
+  .section .eyebrow,
+  #home .eyebrow {
+    margin-bottom: 22px !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .section .eyebrow,
+  #home .eyebrow {
+    margin-bottom: 20px !important;
+  }
+}
+
+
+
+.section:not(#home):not(#pitch) h2.center-head {
+  font-size: clamp(30px, calc(5vw - 2px), 56px) !important;
+  margin-bottom: 34px !important;
+}
+
+
+@media (max-height: 820px) and (min-width: 621px) {
+  .section:not(#home):not(#pitch) h2.center-head {
+    font-size: clamp(26px, calc(4.2vw - 2px), 46px) !important;
+    margin-bottom: 22px !important;
+  }
+}
+
+
+@media (max-width: 620px) {
+  .section:not(#home):not(#pitch) h2.center-head {
+    font-size: clamp(25px, calc(8vw - 2px), 36px) !important;
+    margin-bottom: 20px !important;
+  }
+}
+
+
+
+.section:not(#home):not(#pitch) h2.center-head {
+  margin-bottom: 52px !important;
+}
+@media (max-height: 820px) and (min-width: 621px) {
+  .section:not(#home):not(#pitch) h2.center-head {
+    margin-bottom: 34px !important;
+  }
+}
+@media (max-width: 620px) {
+  .section:not(#home):not(#pitch) h2.center-head {
+    margin-bottom: 28px !important;
+  }
+}
+
+.home-copy{display:flex;flex-direction:column;justify-content:space-between;height:100%}#problema .panel{min-height:clamp(210px,35vh,320px);display:flex;flex-direction:column;justify-content:center}#dados .chartbox{height:clamp(260px,42vh,420px)}#drivers .chartbox{height:clamp(300px,48vh,460px)}#drivers h2.center-head,#dados h2.center-head,#simulador h2.center-head{max-width:none}#drivers .table th,#drivers .table td{text-align:center}#home .wrap,#drivers .wrap,#valor .wrap{height:calc(100vh - 160px);display:flex;flex-direction:column}#home .grid2.home-row,#drivers .panel,#valor .grid3{margin-top:auto;margin-bottom:auto}</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav><div class="brand"><div class="logo"></div><span>Qualidade de Vinhos</span></div><div class="links"><a href="#home">Tese</a><a href="#problema">Problema</a><a href="#drivers">Como funciona</a><a href="#simulador">Demo</a><a href="#valor">Valor</a></div></nav>
+<main id="deck">
+<section class="section" id="home"><div class="wrap"><div class="eyebrow">Tech Challenge | Pitch executivo</div><div class="grid2 home-row"><div class="reveal home-copy"><h1><span class="gradient">Classificação da Qualidade de Vinhos</span></h1><p>Como transformar dados físico-químicos em uma decisão simples: quais vinhos têm maior chance de alcançar qualidade premium.</p></div><div class="panel reveal home-kpis"><div class="kpi-stack"><div class="kpi"><strong>1.018</strong><span>amostras válidas</span></div><div class="kpi"><strong>13,46%</strong><span>vinhos premium</span></div><div class="kpi"><strong>11</strong><span>variáveis químicas</span></div></div></div></div></div></section>
+<section class="section" id="problema"><div class="wrap"><div class="eyebrow reveal">01 | Problema de negócio</div><h2 class="reveal center-head">O desafio é identificar qualidade premium com antecedência.</h2><div class="grid3"><div class="panel reveal"><h3>Dor</h3><p>Se a avaliação chega tarde, a correção do lote fica mais cara e menos previsível.</p></div><div class="panel reveal"><h3>Oportunidade</h3><p>As análises físico-químicas já trazem sinais objetivos de qualidade, como álcool, sulfatos e acidez volátil.</p></div><div class="panel reveal"><h3>Resultado esperado</h3><p>Uma classificação simples para apoiar o enólogo, priorizar lotes e orientar decisões comerciais.</p></div></div></div></section>
+<section class="section" id="dados"><div class="wrap"><div class="eyebrow reveal">02 | Evidência nos dados</div><h2 class="reveal center-head">Hoje, só 13% dos vinhos alcançam qualidade premium.</h2><div class="chartbox reveal" style="max-width:660px;margin:0 auto;height:clamp(360px,58vh,560px)"><div class="chart-title">Qualidade por status</div><canvas id="classChart"></canvas></div></div></section>
+<section class="section" id="drivers"><div class="wrap"><div class="eyebrow reveal">03 | O que explica qualidade</div><h2 class="reveal center-head">O modelo aponta alavancas claras para atuar no processo.</h2><div class="panel reveal" style="max-width:720px;width:100%;margin:auto"><h3>Principais fatores</h3><table class="table"><tr><th>Fator</th><th>Efeito observado</th></tr><tr><td>Álcool</td><td>Maior chance de qualidade premium</td></tr><tr><td>Acidez volátil</td><td>Menor chance de qualidade premium</td></tr><tr><td>Ácido cítrico</td><td>Maior chance de qualidade premium</td></tr><tr><td>Sulfatos</td><td>Maior chance de qualidade premium</td></tr><tr><td>Densidade</td><td>Menor chance de qualidade premium</td></tr></table></div></div></section>
+
+
+<section class="section" id="simulador"><div class="wrap"><div class="eyebrow reveal">04 | Simulador</div><h2 class="reveal center-head">Simular um lote de vinho</h2><div class="sim"><div class="panel sliders reveal"><h3>Dados do lote</h3><label>Álcool <span id="vAlcohol">10.4</span></label><input id="sAlcohol" type="range" min="8.4" max="14.9" step="0.1" value="10.4"><label>Sulfatos <span id="vSulphates">0.66</span></label><input id="sSulphates" type="range" min="0.33" max="2.00" step="0.01" value="0.66"><label>Acidez volátil <span id="vVolatile">0.53</span></label><input id="sVolatile" type="range" min="0.12" max="1.58" step="0.01" value="0.53"><label>Densidade <span id="vDensity">0.9967</span></label><input id="sDensity" type="range" min="0.9901" max="1.0037" step="0.0001" value="0.9967"><label>Ácido cítrico <span id="vCitric">0.27</span></label><input id="sCitric" type="range" min="0" max="1" step="0.01" value="0.27"></div><div class="panel reveal gauge-panel"><h3>Chance de alta qualidade</h3><div class="gauge"><div id="gauge" class="gauge-circle" style="--p:22%"><div class="gauge-inner"><div><strong id="prob">22%</strong><span id="decision" class="pill">Baixa/Média provável</span></div></div></div></div></div></div></div></section>
+<section class="section" id="valor"><div class="wrap"><div class="eyebrow reveal">05 | Valor e plano de piloto</div><h2 class="reveal center-head">Aplicação clara: qualidade, produção e margem.</h2><div class="grid3"><div class="panel reveal"><h3>1. Piloto</h3><p>Rodar com dados históricos de uma vinícola por 8 a 12 semanas.</p></div><div class="panel reveal"><h3>2. Validação</h3><p>Comparar recomendações do modelo com especialistas e resultados reais dos lotes.</p></div><div class="panel reveal"><h3>3. Escala</h3><p>Integrar laboratório, painel executivo, alertas e retreinamento por safra.</p></div></div></div></section>
+<section class="section" id="pitch"><div class="wrap"><div class="eyebrow reveal">Final</div><div class="final-wrap"><h1 class="reveal"><span class="gradient">Obrigado!</span></h1></div></div></section>
+</main>
+<div class="counter" id="counter">01 / 08</div><div class="slide-controls"><button class="control" id="prev">‹</button><button class="control" id="next">›</button></div>
+<script>
+const colors=['#c9a227','#9f3045','#62d2ff','#58d68d','#ffb266','#ff6b6b'];
+const quality={'3':6,'4':33,'5':433,'6':409,'7':122,'8':15};const classes={'Baixa | Média':881,'Alta':137};
+const corr={'alcohol':.410,'volatile acidity':-.302,'citric acid':.237,'sulphates':.213,'density':-.166,'total sulfur dioxide':-.115,'fixed acidity':.108,'chlorides':-.106,'free sulfur dioxide':-.067,'pH':-.065,'residual sugar':.064};
+const models=[{m:'Reg. Logística',rec:.765,f1:.500,roc:.893},{m:'Gradient Boosting',rec:.412,f1:.509,roc:.904},{m:'Random Forest',rec:.353,f1:.490,roc:.916}];const th={'Random Forest':.640,'Gradient Boosting':.595,'Reg. Logística':.549};
+function setup(c){let ctx=c.getContext('2d');c.width=c.clientWidth*2;c.height=c.clientHeight*2;ctx.setTransform(2,0,0,2,0,0);ctx.clearRect(0,0,c.clientWidth,c.clientHeight);return{ctx,W:c.clientWidth,H:c.clientHeight}}
+function rr(ctx,x,y,w,h,r){r=Math.max(0,Math.min(r,w/2,h/2));ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath()}
+function bar(c,labels,vals,opt={}){let{ctx,W,H}=setup(c),pad={l:opt.l||58,r:22,t:52,b:56},min=opt.min??Math.min(0,...vals),max=opt.max??Math.max(...vals)*1.16;ctx.strokeStyle='rgba(255,255,255,.12)';ctx.fillStyle='#dccbc3';ctx.font='12px Segoe UI';for(let i=0;i<5;i++){let y=pad.t+(H-pad.t-pad.b)*i/4;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(W-pad.r,y);ctx.stroke();let v=max-(max-min)*i/4;ctx.fillText(opt.percent?Math.round(v*100)+'%':Math.round(v),8,y+4)}let bw=(W-pad.l-pad.r)/vals.length*.62;vals.forEach((v,i)=>{let zero=H-pad.b-(0-min)/(max-min)*(H-pad.t-pad.b), y=H-pad.b-(v-min)/(max-min)*(H-pad.t-pad.b), h=Math.abs(zero-y), x=pad.l+(W-pad.l-pad.r)*(i+.5)/vals.length-bw/2;ctx.fillStyle=v>=0?colors[i%colors.length]:'#62d2ff';rr(ctx,x,Math.min(y,zero),bw,Math.max(h,2),8);ctx.fill();ctx.fillStyle='#fff';ctx.font='bold 11px Segoe UI';ctx.textAlign='center';ctx.fillText(opt.percent?(v*100).toFixed(0)+'%':(opt.dec? v.toFixed(opt.dec):Math.round(v)),x+bw/2,Math.min(y,zero)-7);ctx.fillStyle='#dccbc3';ctx.font='10.5px Segoe UI';ctx.fillText(labels[i],x+bw/2,H-pad.b+16);ctx.textAlign='left'})}
+function hbar(c,labels,vals){let{ctx,W,H}=setup(c);ctx.font='11.5px Segoe UI';let maxLabelW=Math.max(...labels.map(l=>ctx.measureText(l).width));let pad={l:maxLabelW+18,r:40,t:10,b:10};let maxAbs=Math.max(...vals.map(v=>Math.abs(v)))*1.2;let plotW=W-pad.l-pad.r;let scaleX=v=>pad.l+plotW/2+ (v/maxAbs)*(plotW/2);let zeroX=scaleX(0);let rowH=(H-pad.t-pad.b)/labels.length;let barH=Math.min(rowH*.52,20);ctx.strokeStyle='rgba(255,255,255,.16)';ctx.beginPath();ctx.moveTo(zeroX,pad.t);ctx.lineTo(zeroX,H-pad.b);ctx.stroke();labels.forEach((lab,i)=>{let v=vals[i];let y=pad.t+rowH*i+(rowH-barH)/2;let x0=Math.min(zeroX,scaleX(v)),x1=Math.max(zeroX,scaleX(v));let w=Math.max(x1-x0,2);ctx.fillStyle=v>=0?'#58d68d':'#ff6b6b';rr(ctx,x0,y,w,barH,6);ctx.fill();ctx.fillStyle='#dccbc3';ctx.font='11px Segoe UI';ctx.textAlign='right';ctx.fillText(lab,pad.l-10,y+barH/2+4);ctx.textAlign=v>=0?'left':'right';ctx.fillStyle='#fff';ctx.font='bold 10.5px Segoe UI';let vx=v>=0?x1+6:x0-6;ctx.fillText(v.toFixed(2).replace('.',','),vx,y+barH/2+4)});ctx.textAlign='left'}
+function donut(c,labels,vals){let{ctx,W,H}=setup(c);let legendH=34;let cx=W/2,cy=(H-legendH)/2;let r=Math.min(W,(H-legendH))*.34;let holeR=r*.6;let total=vals.reduce((a,b)=>a+b,0);let a=-Math.PI/2;let palette=['#6f2531','#c9a227'];vals.forEach((v,i)=>{let da=v/total*Math.PI*2;ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,a,a+da);ctx.closePath();ctx.fillStyle=palette[i%palette.length];ctx.fill();a+=da});ctx.globalCompositeOperation='destination-out';ctx.beginPath();ctx.arc(cx,cy,holeR,0,Math.PI*2);ctx.fill();ctx.globalCompositeOperation='source-over';let altaIdx=labels.findIndex(l=>l.toLowerCase().includes('alta'));if(altaIdx<0)altaIdx=1;let pctAlta=(vals[altaIdx]/total*100).toFixed(2).replace('.',',')+'%';let labelText='Alta qualidade';function chord(dy){return 2*Math.sqrt(Math.max(holeR*holeR-dy*dy,0))*.82}function fitSize(text,startSize,dy,weight){let size=startSize;while(size>9){ctx.font=(weight?weight+' ':'')+size+'px Segoe UI';if(ctx.measureText(text).width<=chord(dy))break;size--}return size}let dy1=holeR*.2,dy2=holeR*.5;let s1=fitSize(pctAlta,Math.round(holeR*.46),dy1,'bold');let s2=fitSize(labelText,Math.round(holeR*.19),dy2,'');ctx.textAlign='center';ctx.fillStyle='#fff';ctx.font='bold '+s1+'px Segoe UI';ctx.fillText(pctAlta,cx,cy-dy1*.3);ctx.fillStyle='#dccbc3';ctx.font=s2+'px Segoe UI';ctx.fillText(labelText,cx,cy+dy2*.9);ctx.textAlign='left';ctx.font='12px Segoe UI';let parts=labels.map((l,i)=>{let p=(vals[i]/total*100).toFixed(2).replace('.',',');return l+' · '+vals[i].toLocaleString('pt-BR')+' ('+p+'%)'});let widths=parts.map(t=>ctx.measureText(t).width+20);let gap=26;let totalW=widths.reduce((s,w)=>s+w,0)+gap*(parts.length-1);let x=(W-totalW)/2;let ly=H-legendH+18;parts.forEach((t,i)=>{ctx.fillStyle=palette[i%palette.length];ctx.fillRect(x,ly-10,14,14);ctx.fillStyle='#dccbc3';ctx.fillText(t,x+19,ly+2);x+=widths[i]+gap})}
+function grouped(c){let{ctx,W,H}=setup(c);let legendH=26;let pad={l:50,r:18,t:14+legendH,b:44};let labels=models.map(x=>x.m);let groups=[models.map(x=>x.f1),models.map(x=>x.rec),models.map(x=>x.roc)];let names=['F1','Recall','ROC-AUC'];let paletteG=['#c9a227','#9f3045','#62d2ff'];ctx.font='11px Segoe UI';let legendParts=names.map((n,i)=>({text:n,color:paletteG[i]}));let lw=legendParts.map(p=>ctx.measureText(p.text).width+22);let lgap=20;let ltotal=lw.reduce((s,w)=>s+w,0)+lgap*(legendParts.length-1);let lx=(W-ltotal)/2,ly=32;legendParts.forEach((p,i)=>{ctx.fillStyle=p.color;ctx.fillRect(lx,ly-9,11,11);ctx.fillStyle='#dccbc3';ctx.fillText(p.text,lx+16,ly+1);lx+=lw[i]+lgap});ctx.strokeStyle='rgba(255,255,255,.12)';ctx.fillStyle='#dccbc3';ctx.font='11px Segoe UI';for(let i=0;i<5;i++){let y=pad.t+(H-pad.t-pad.b)*i/4;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(W-pad.r,y);ctx.stroke();ctx.fillText(Math.round((1-i/4)*100)+'%',8,y+4)}let gw=(W-pad.l-pad.r)/labels.length,bw=gw/(groups.length+1);labels.forEach((lab,i)=>{groups.forEach((g,j)=>{let v=g[i],h=(H-pad.t-pad.b)*v,x=pad.l+i*gw+(j+.35)*bw,y=H-pad.b-h;ctx.fillStyle=paletteG[j];rr(ctx,x,y,bw*.8,h,7);ctx.fill()});ctx.fillStyle='#dccbc3';ctx.font='10px Segoe UI';ctx.textAlign='center';ctx.fillText(lab,pad.l+i*gw+gw/2,H-pad.b+16);ctx.textAlign='left'})}
+function draw(){donut(classChart,Object.keys(classes),Object.values(classes))}
+function sim(){let A=+sAlcohol.value,S=+sSulphates.value,V=+sVolatile.value,D=+sDensity.value,C=+sCitric.value;vAlcohol.textContent=A.toFixed(1);vSulphates.textContent=S.toFixed(2);vVolatile.textContent=V.toFixed(2);vDensity.textContent=D.toFixed(4);vCitric.textContent=C.toFixed(2);let z=-2.12+.62*(A-10.44)+1.45*(S-.658)-1.75*(V-.531)-80*(D-.99673)+.75*(C-.268);let p=1/(1+Math.exp(-z));prob.textContent=Math.round(p*100)+'%';gauge.style.setProperty('--p',Math.round(p*100)+'%');decision.textContent=p>=.5?'Alta qualidade provável':'Baixa/Média provável';decision.className=p>=.5?'pill green':'pill'}['sAlcohol','sSulphates','sVolatile','sDensity','sCitric'].forEach(id=>document.getElementById(id).addEventListener('input',sim));
+const deck=document.getElementById('deck'),sections=[...document.querySelectorAll('section')],links=[...document.querySelectorAll('a[href^="#"]')],nav=[...document.querySelectorAll('nav a')],progress=document.getElementById('progress'),counter=document.getElementById('counter');let index=0,lock=false;function go(i){index=Math.max(0,Math.min(i,sections.length-1));deck.style.transform=`translateX(-${index*100}vw)`;progress.style.width=((index+1)/sections.length)*100+'%';counter.textContent=String(index+1).padStart(2,'0')+' / '+String(sections.length).padStart(2,'0');let id='#'+sections[index].id;nav.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===id));sections[index].querySelectorAll('.reveal').forEach((el,n)=>{el.classList.remove('visible');setTimeout(()=>el.classList.add('visible'),80+n*50)})}links.forEach(a=>a.onclick=e=>{e.preventDefault();let t=sections.findIndex(s=>'#'+s.id===a.getAttribute('href'));if(t>=0)go(t)});next.onclick=()=>go(index+1);prev.onclick=()=>go(index-1);document.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(index+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(index-1)}});window.addEventListener('wheel',e=>{if(lock)return;if(Math.abs(e.deltaY)<18)return;lock=true;go(index+(e.deltaY>0?1:-1));setTimeout(()=>lock=false,850)},{passive:true});function fitOneLine(el){if(!el)return;el.style.whiteSpace='nowrap';let max=parseFloat(getComputedStyle(el).fontSize),min=16,size=max;el.style.fontSize=size+'px';while(el.scrollWidth>el.parentElement.clientWidth&&size>min){size--;el.style.fontSize=size+'px'}if(el.scrollWidth>el.parentElement.clientWidth){el.style.whiteSpace='normal';el.style.fontSize=''}}function fitTitles(){document.querySelectorAll('#drivers h2,#dados h2,#simulador h2').forEach(el=>{el.style.fontSize='';el.style.whiteSpace='';fitOneLine(el)})}window.addEventListener('resize',()=>{draw();fitTitles()});draw();sim();fitTitles();go(0);
+</script>
+</body></html>
